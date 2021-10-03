@@ -1,9 +1,9 @@
 process vibrant_download_DB {
-    if (params.cloudProcess) { publishDir "${params.databases}/Vibrant/", mode: 'copy', pattern: "database.tar.gz" }
+    if (params.cloudProcess) { publishDir "${params.databases}/Vibrant/", mode: 'copy', pattern: "database" }
     else { storeDir "${params.databases}/Vibrant" }
     label 'vibrant'    
     output:
-        path("database.tar.gz")
+        path("database")
     script:
         """
         # profile names for VIBRANT_setup.py
@@ -13,7 +13,7 @@ process vibrant_download_DB {
         # pack together database
         mkdir database && mv *.{HMM,h3?} database
         cp /opt/conda/share/vibrant-1.0.1/files/VIBRANT*.{tsv,sav} database
-        tar -czf database.tar.gz database/
+        #tar -czf database.tar.gz database/
         """
 }
 

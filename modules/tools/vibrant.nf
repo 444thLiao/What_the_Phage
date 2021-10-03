@@ -11,7 +11,7 @@ process vibrant {
     script:
         """
       
-        tar xzf ${db}
+        # tar xzf ${db}
 
         VIBRANT_run.py -i ${fasta} -t ${task.cpus} \
         -d database \
@@ -37,7 +37,7 @@ process vibrant_virome {
     script:
         """
       
-        tar xzf ${db}
+        # tar xzf ${db}
 
         VIBRANT_run.py -i ${fasta} -t ${task.cpus} \
         -virome \

@@ -287,7 +287,7 @@ workflow vibrant_database {
         if (!params.cloudProcess) { vibrant_download_DB(); db = vibrant_download_DB.out }
         //cloud storage via db_preload.exists()
         if (params.cloudProcess) {
-            db_preload = file("${params.databases}/Vibrant/database.tar.gz")
+            db_preload = file("${params.databases}/Vibrant/database")
             if (db_preload.exists()) { db = db_preload }
             else  { vibrant_download_DB(); db = vibrant_download_DB.out } 
         }
