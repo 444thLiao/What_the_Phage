@@ -14,16 +14,8 @@ process vibrant {
         tar xzf ${db}
 
         VIBRANT_run.py -i ${fasta} -t ${task.cpus} \
-        -k database/KEGG_profiles_prokaryotes.HMM \
-        -p database/Pfam-A_v32.HMM \
-        -v database/VOGDB94_phage.HMM \
-        -e database/Pfam-A_plasmid_v32.HMM \
-        -a database/Pfam-A_phage_v32.HMM \
-        -c database/VIBRANT_categories.tsv \
-        -n database/VIBRANT_names.tsv \
-        -s database/VIBRANT_KEGG_pathways_summary.tsv \
-        -m database/VIBRANT_machine_model.sav \
-        -g database/VIBRANT_AMGs.tsv 
+        -d database \
+        -m database
 
         # error control via touch
         cp VIBRANT_*/VIBRANT_results_*/VIBRANT_machine_*.tsv vibrant_\${PWD##*/}.tsv 2>/dev/null
@@ -49,16 +41,8 @@ process vibrant_virome {
 
         VIBRANT_run.py -i ${fasta} -t ${task.cpus} \
         -virome \
-        -k database/KEGG_profiles_prokaryotes.HMM \
-        -p database/Pfam-A_v32.HMM \
-        -v database/VOGDB94_phage.HMM \
-        -e database/Pfam-A_plasmid_v32.HMM \
-        -a database/Pfam-A_phage_v32.HMM \
-        -c database/VIBRANT_categories.tsv \
-        -n database/VIBRANT_names.tsv \
-        -s database/VIBRANT_KEGG_pathways_summary.tsv \
-        -m database/VIBRANT_machine_model.sav \
-        -g database/VIBRANT_AMGs.tsv 
+        -d database \
+        -m database
 
         # error control via touch
         cp VIBRANT_*/VIBRANT_results_*/VIBRANT_machine_*.tsv vibrant_\${PWD##*/}.tsv 2>/dev/null
